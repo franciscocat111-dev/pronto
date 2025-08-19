@@ -7,7 +7,7 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const moment = require('moment-timezone');
 const fs = require('fs');
 const path = require('path');
-const OpenAI = require('openai'); // Adicionado a biblioteca da OpenAI
+const OpenAI = require('openai');
 
 // ===== INÍCIO DAS MUDANÇAS: INTEGRAÇÃO COM OPENAI =====
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
@@ -21,7 +21,7 @@ const getSystemPrompt = () => {
     • P (Pequena – 4 fatias) ......... R$ ${CARDAPIO.P.toFixed(2)}
 
     ➕ Adicionais
-    • Borda recheada ................ R$ ${CARDAPIO.Borda.toFixed(2)}
+    • Borda recheada ................ R$ ${CARDAPio.Borda.toFixed(2)}
 
     🥗 Sabores Disponíveis
     • ${CARDAPIO.Sabores.join('\n• ')}
@@ -318,7 +318,6 @@ if (!modoSimulacao) {
     authStrategy: new LocalAuth(),
     puppeteer: {
       headless: true,
-      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
   });
